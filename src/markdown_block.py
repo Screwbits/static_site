@@ -13,15 +13,16 @@ class BlockType(Enum):
 
 
 def markdown_to_blocks(markdown: str) -> list[str]:
-    markdown_blocks = markdown.split("\n\n")
+    blocks = markdown.split("\n\n")
+    filtered_blocks = []
 
-    for i in range(0, len(markdown_blocks)):
-        markdown_blocks[i] = markdown_blocks[i].strip()
-        markdown_blocks[i] = markdown_blocks[i].replace("\n        ", "\n")
-
-    markdown_blocks = [block for block in markdown_blocks if block != "" and block != "\n"]
-
-    return markdown_blocks
+    for block in blocks:
+        if block == "":
+            continue
+        block = block.strip()
+        filtered_blocks.append(block)
+        
+    return filtered_blocks
 
 def block_to_block_type(markdown_block: str) -> BlockType:
     lines = markdown_block.split("\n")
