@@ -17,7 +17,7 @@ def generate_pages_recursive(
             generate_pages_recursive(from_path, template_path, dest_path, basepath)
 
 
-def generate_page(from_path: str, template_path: str, dest_path: str, basepath: str) -> None:
+def generate_page(from_path: str, template_path: str, dest_path: str | Path, basepath: str) -> None:
     print(f" * {from_path} {template_path} -> {dest_path}")
     from_file = open(from_path, "r")
     markdown_content = from_file.read()
